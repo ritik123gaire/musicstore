@@ -1,0 +1,127 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<!--header -->
+<header class="upper-page container-fluid bg-red py-3">
+  <img class="watermark" src="{% static 'images/waves-icon.png' %}" alt="wave-big" />
+  <div class="z-2 container max-w-80 w-90">
+    <div class="container flex-col">
+      <div class="brand-name--lg-w-page w-mc">MUSICIFY</div>
+      <h1 class="co-w f-hl w-mc">
+        Your marketplace for buying  Musical Instruments
+      </h1>
+    </div>
+    <div class="search container-fluid ai-c jc-sb w-100">
+      <div class="search-top h-search ai-c">
+        <div
+          class="search__dropdown bg-white h-100 w-20 bord-r-red ai-c pl-1 pr-3 d-none d-md-flex"
+        >
+          <div class="search__dropdown-icon co-dt m-2">
+            <i class="fas fa-caret-down"></i>
+          </div>
+          <div class="search__dropdown-text co-dt f-gl">Instruments</div>
+        </div>
+        <div
+          class="search__question bg-white h-100 bord-r-red co-l ai-c f-gl pl-2"
+        >
+          What do you search for?
+        </div>
+        <input
+          type="text"
+          placeholder="Search"
+          class="search__input h-100 co-l"
+        />
+      </div>
+      <div class="search-btn-div h-100">
+        <button type="button" class="search__button btn-dark w-100">
+          Search
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+<!-- slider -->
+
+<!-- new -->
+<div class="hotads py-3 co-l f-hm">
+  <div class="hotads-cont container ai-c h-100 px-0">
+    <div class="hotads__arrow_circle round w-mc ai-c jc-c co-r d-none d-md-flex">
+      <i class="fas fa-chevron-left"></i>
+    </div>
+<div class="hotads__main flex-col w-90 center h-100 px-3">
+    <div class="hotads__main_content jc-sb">
+      <div class="hotads__main_content-img"></div>
+      <div class="hotads__main_content-info py-3">
+        <h3 class="co-r f-hm">Flamenco Guitar - Cordoba C5</h3>
+        <div class="fixed-p">
+
+        <p class="fixed-p f-hl co-d">
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+          Reprehenderit alias tempora officia molestiae assumenda
+          ratione debitis ipsum explicabo voluptates nemo, sequi fugiat
+         
+        </p>
+        </div>
+        <p class="co-d">By: <span class="co-l f-hl">John Doe</span></p>
+        <p class="mb-0 co-d">
+          Location: <span class="co-l f-hl">Caraguatatuba, BR</span>
+        </p>
+        <div class="hotads__main_content-info-button w-mc ai-c mt-2">
+          <button type="button" class="btn-red m-0 center ai-c py-2">$1050</button>
+          <button type="button" class="btn-red mx-0 ai-c">
+            <i class="fas fa-shopping-cart mr-2" aria-hidden="true"></i>
+            <span>Purchase Details</span>
+          </button>
+          </div>
+          </div>
+       
+      
+          
+          <div class="hotads-cont container ai-c h-100 px-0">
+            <div class="hotads__arrow_circle round w-mc ai-c jc-c co-r d-none d-md-flex">
+              <i class="fas fa-chevron-right"></i>
+            </div>
+ </div>
+</div>
+</div>
+
+
+<!-- products -->
+<div class="products__display w-90 center mt-5">
+    <div class="products__display__header ai-c mb-3 co-d">
+      <i class="fas fa-guitar mr-4 co-l"></i>
+      <h5>TOP SELLS</h5>
+      <p class="my-0 ml-5 co-l f-hl">
+        Top Sellers
+      </p>
+    </div>
+
+<div class="products__display__cards ai-c jc-sb">
+
+        {% for product in products %}
+
+        <div class="products__display__cards-item">
+                <div class="products__display__cards-item--img h-50"><img src={{product.image.url}} alt="" class='product-image'  style="width:196px;height: 138px;"> </div>
+               <div class="products__display__cards-item--content h-50 mx-3 pt-3">
+                <h6 class="co-dt">{{product.name}}</h6>
+                <p>{{product.category}}</p>
+                <div class="ai-c jc-sb mt-2">
+                    <div class="price co-r f-hm">USD {{product.price}}</div>
+                    <button class="cart-button" data-product={{product.id}} data-user={{request.user}} data-action="add" >Add</button>
+                    <!-- btn-transparent w-50 -->
+                </div>
+            </div>
+                
+        </div>
+
+        {% endfor %}
+
+    </div>
+      
+       
+
+{% endblock %}

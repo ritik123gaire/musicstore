@@ -1,0 +1,111 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<style>
+    .container{
+        display: block;
+        text-align: center;
+    }
+    
+    form{
+        display: inline-block;
+        text-align: center;
+        width: 400px;
+        margin : auto;
+        margin-top: 70px;
+        margin-bottom: 70px;
+        padding-bottom: 55;
+        padding: auto;
+        border: 3px solid;  
+        border-radius: 15px;
+    }
+
+    label{
+        display:inline-block;
+        width: 100px;
+        text-align: left;
+        font-size:50px;
+        padding:auto;
+        
+    }
+
+    p{
+        font-size: 15px;
+    }
+
+    input{
+        width: 60%;
+        padding: 12px 20px;
+        border: 2px solid;
+        margin: 8px 0;
+        box-sizing: border-box;
+    }
+
+    input[type=text], input[type=password]{
+        border-radius: 3px;
+    }
+
+    input[type=submit]{
+        background-color:#20ce7E;
+        color: white;
+        border: none;
+        border-radius: 3px;
+    }
+    select{
+        width: 30%;
+        height: 50px;
+        padding: 12px 20px;
+        margin: 10px 0;
+        box-sizing: border-box;
+        font-size: 18px;
+    }
+
+    .div-link:link, .div-link:visited{
+        color: #20ce7E;
+        text-decoration:none;
+    }
+   
+</style>
+
+    <div class="container">
+        <form action="" method='POST'>
+            <div class="nav__brand__name"><a class="brand-name--sm-w" >Musicify Register</a></div>
+            {% csrf_token %}
+            <div>
+                <label for="email">{{ form.email.label }}</label>:
+                {{ form.email }}
+            </div>
+        
+            <div>
+                <label for="first_name">{{ form.first_name.label }}</label>:
+                {{ form.first_name }}
+            </div>
+        
+            <div>
+                <label for="last_name">{{ form.last_name.label }}</label>:
+                {{ form.last_name }}
+            </div>
+            <div>
+                <label for="phone">{{ form.phone.label }}</label>:
+                {{ form.phone }}
+            </div>
+            <div>
+                <label for="gender">{{ form.gender.label }}</label>:
+                {{ form.gender }}
+            </div>
+            <div>
+                <label for="password">{{ form.password1.label }}</label>:
+                {{ form.password1 }}
+            </div>
+        
+            <div>
+                <label for="repassword">{{ form.password2.label }}</label>:
+                {{ form.password2 }}
+            </div>
+            <input type="submit" name='Register'>
+            <p>Already Have an Account? <a href="{% url 'login-page' %}" class="div-link">Login here</a></p>
+        </form>
+    </div>
+
+{% endblock %}

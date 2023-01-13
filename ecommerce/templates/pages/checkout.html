@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<style>
+    .container{
+        display: block;
+        text-align: center;
+    }
+    form{
+        display: inline-block;
+        text-align: center;
+        width: 600px;
+        margin-top: 60px;
+        padding-bottom: 10px;
+        border: 1px solid;
+        border-radius: 10px;
+    }
+    label{
+        display: inline-block;
+        width: 150px;
+        text-align: left;
+        font-size: 18px;
+    }
+    input{
+        width: 60%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        box-sizing: border-box;
+    }
+    input[type=text], input[type=password]{
+        border-radius: 3px;
+    }
+    p{
+        font-size: 20px;
+        font-weight:bold;
+    }
+    hr{
+        width: 70%;
+        color: green;
+    }
+
+    input[type=submit]{
+        background-color:#20ce7E;
+        color: white;
+        border: none;
+        border-radius: 3px;
+    }
+</style>
+
+    <div class="container">
+        <form action="" method='POST'>
+            <p>CheckOut Form</p>
+            <hr>
+            {% csrf_token %}
+            <div>
+                <label for="City">City: </label>
+                <input type="text" id="city" name="city">
+            </div>
+            <div>
+                <label for="State">State: </label>
+                <input type="text" id="state" name="state">
+            </div>
+            <div>
+                <label for="Location">Location: </label>
+                <input type="text" id="location" name="location">
+            </div>
+            <input type="hidden" id='cart' name='cart' value="{{cart.id}}">
+            <input type="submit" value='Proceed To Payment'>
+        </form>
+    </div>
+
+{% endblock  %}

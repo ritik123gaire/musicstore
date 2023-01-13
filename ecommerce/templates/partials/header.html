@@ -1,0 +1,189 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
+<!-- <style>
+    a:link, a:visited{
+        text-decoration:none;
+        color:white;
+    }
+
+    a:hover{
+        color: yellow;
+    }
+
+    
+
+</style> -->
+
+<header class="bg-dark w-100">
+<nav class="nav-bar ai-c jc-sb py-1 max-w-80 w-90">
+    <div class="nav--left ai-c">
+        <div class="nav__brand">
+          <div class="nav__brand__logo mr-2">
+            <img
+              class="nav__brand__logo__img"
+              src="{% static 'images/waves-icon.png' %}"
+              alt="waves-icon"
+            />
+          </div>
+          <div class="nav__brand__name"><a class="brand-name--sm-w" href="{% url 'home' %}">MUSICIFY</a></div>
+        </div>
+        <div class="nav__menu--short px-3 py-1 ai-c">
+            <div><a href="{% url 'home' %}"><i class="fas fa-bars"></i></a></div>
+          </div>
+
+        <div class="nav__menu ai-c tupper">
+
+            <a class="nav__menu__item" href="{% url 'home' %}">
+              <div class="nav__menu__item co-r ai-c">
+                <div class="nav__menu__item-icon mr-2">
+                  <i class="fas fa-home"></i>
+                </div>
+                <div class="nav__menu_item-text">Home</div>
+              </div>
+            </a>
+
+            <a class="nav__menu__item" href="">
+                <div class="nav__menu__item co-l ai-c">
+                  <div class="nav__menu__item-icon mr-2">
+                    <i class="fas fa-record-vinyl"></i>
+                  </div>
+                  <div class="nav__menu_item-text">Collection</div>
+                </div>
+              </a>
+
+              {% if user.is_authenticated %}
+             <a class="nav__menu__item" href="{% url 'logout' %}">
+              <div class="nav__menu__item co-l ai-c">
+                <div class="nav__menu__item-icon mr-2">
+                  <i class="fas fa-record-vinyl"></i>
+                </div>
+                <div class="nav__menu_item-text">Logout</div>
+              </div>
+            </a>
+             
+              {% else %}
+              
+            <a class="nav__menu__item" href="{% url 'login-page' %}">
+                <div class="nav__menu__item co-l ai-c">
+                  <div class="nav__menu__item-icon mr-2">
+                    <i class="fas fa-record-vinyl"></i>
+                  </div>
+                  <div class="nav__menu_item-text">Login</div>
+                </div>
+              </a>
+
+              <a class="nav__menu__item" href="{% url 'register-page' %}">
+                <div class="nav__menu__item co-l ai-c">
+                    <div class="nav__menu__item-icon mr-2">
+                      <i class="fas fa-record-vinyl"></i>
+                    </div>
+                    <div class="nav__menu_item-text">Register</div>
+                  </div>
+                </a>
+
+
+              {% endif %}
+              
+              
+
+                <a class="nav__menu__item" href="{% url 'cart' %}">
+                    <div class="nav__menu__item co-l ai-c">
+                      <div class="nav__menu__item-icon mr-2">
+                        <i class="fas fa-shopping-cart"></i>
+                      </div>
+                      <div class="nav__menu_item-text">CART</div>
+                    </div>
+                </a>
+             </a>
+
+             {% if user.is_authenticated %}
+             <!-- <a class="nav__menu__item" href="#"></a> -->
+             
+             <div class="nav__menu__item co-l ai-c">
+                      
+             <div class="nav__menu_item-text"><b>Welcome {{ user.first_name }}</b> </div> 
+             </div>
+             
+             {% endif %}
+
+             
+              
+                
+              
+        </div>
+</nav>
+</header>
+
+    <!-- <div class='nav-items'>
+        Category
+    </div> -->
+    <!-- {% if user.is_authenticated %}
+    <div class='nav-item'>
+        <a href="{% url 'logout' %}">Logout</a> -->
+    </div>
+    {% else %}
+    <!-- <div class='nav-items'>
+        <a href="{% url 'login-page' %}">Login</a>
+    </div>
+    <div class='nav-items'>
+        <a href="{% url 'register-page' %}">Register</a>
+    </div> -->
+    {% endif %}
+    <!-- <div class='nav-items'>
+        <a href="{% url 'cart' %}">Cart</a>
+    </div> -->
+   
+    
+</nav>
+
+
+
+<!-- 
+{% load static %}
+
+<style>
+    a:link, a:visited{
+        text-decoration:none;
+        color:white;
+    }
+
+    a:hover{
+        color: yellow;
+    }
+
+    
+
+</style>
+
+
+
+
+<nav class='navbar'>
+    <div class='nav-items'>
+        <a href="{% url 'home' %}">Home</a>
+    </div>
+    <div class='nav-items'>
+        Category
+    </div>
+    {% if user.is_authenticated %}
+    <div class='nav-item'>
+        <a href="{% url 'logout' %}">Logout</a>
+    </div>
+    {% else %}
+    <div class='nav-items'>
+        <a href="{% url 'login-page' %}">Login</a>
+    </div>
+    <div class='nav-items'>
+        <a href="{% url 'register-page' %}">Register</a>
+    </div>
+    {% endif %}
+    <div class='nav-items'>
+        <a href="{% url 'cart' %}">Cart</a>
+    </div>
+    <h1 style="margin-left:auto; margin-right:auto;font-size: 30px;">MUSICIFY</h1>
+    <div class="nav-items searchbar">
+        <input type="text" placeholder="Search Here..." style="margin-left:20px;height:30px; border-radius: 3px; width: 400px;"/>
+        <input type="submit" value="Search" style="margin-right:auto; height:32px; border-radius: 3px; width: 100px; "/>
+    </div>
+</nav> -->

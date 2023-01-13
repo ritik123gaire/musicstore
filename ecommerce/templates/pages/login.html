@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<style>
+    .container{
+        display: block;
+        text-align: center;
+    }
+    
+    form{
+        display: inline-block;
+        text-align: center;
+        width: 382px;
+        margin : auto;
+        margin-top: 60px;
+        margin-bottom :70px;
+        padding-bottom: 55;
+        padding: auto;
+        border: 3px solid;  
+        border-radius: 15px;
+    }
+
+    p{
+        font-size: 20px;
+    }
+
+    input{
+        width: 60%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        box-sizing: border-box;
+    }
+
+    input[type=text], input[type=password]{
+        border-radius: 3px;
+    }
+
+    input[type=submit]{
+        background-color:#20ce7E;
+        color: white;
+        border: none;
+        border-radius: 3px;
+    }
+
+    .div-link:link, .div-link:visited{
+        color: #20ce7E;
+        text-decoration:none;
+    }
+
+</style>
+            <div class="container">
+                <form action="" method='POST'>
+                    <div class="nav__brand__name"><a class="brand-name--sm-w" >Musicify Login</a></div>
+                    {% csrf_token %}
+                        <div>
+                            <input type="text" id='email' name='email' placeholder= "Enter email address..." required/>
+                        </div>
+                        <div>
+                            <input type="password" id='password' name='password' placeholder= "Enter Password..." required />
+                        </div>
+                        <div>
+                            <input type='submit' value='Login' />
+                        </div>
+                        Need an Account? <a href="{% url 'register-page' %}" class="div-link">Register here</a>
+                </form>
+            <br>
+            </div>
+            
+{% endblock %}

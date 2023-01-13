@@ -1,0 +1,114 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<style>
+    .card-items,.card-total{
+        width: 60%;
+        font-weight:bold;
+        font-size: 22px;
+        margin-top: 20px;
+        margin-left:auto;
+        margin-right:auto;
+    }
+
+    .table-container{
+        margin-top: 20px;
+        width:60%;
+        margin-left:auto;
+        margin-right:auto;
+    }
+    table{
+        font-family: Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+        text-align: center;
+    }
+    th,td{
+        border: 1px solid #ddd;
+        padding: 8px;
+    }
+    th{
+        padding-top: 12px;
+        padding-bottom: 12px;
+        background-color: #04AA6D;
+        color: white;
+    }
+    .cart-product-image{
+        margin-left:auto;
+        margin-right: auto;
+        height: 100px;
+        width: 100px;
+    }
+
+    .item-product-quantity, plus, minus{
+        padding: 8px;
+        margin: 8px;
+    }
+    
+    .checkout-btn{
+        float:right;
+        height: 50px;
+        font-size: 18px;
+        padding: 10px;
+        margin-top:10px;
+        background: #20ce7E;
+        border: none;
+        border-radius: 3px;
+        color: white;
+    }
+
+</style>
+
+    <div class='card-items'>
+        Cart Items: {{cart.cart_items}}
+    </div>
+    
+    <div class='card-total'>
+        Total = Rs.{{cart.cart_total}}
+    </div>
+
+    <div class='table-container'>
+        <table>
+            <thead>
+                <th>Image</th>
+                <th>Product</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total</th>
+            </thead>
+            <tbody>
+                {% if cart.cart_items > 0 %}
+                {% for item in items %}
+                    <tr>
+                        <td>
+                            <img src={{item.product.image.url}} alt="" class = 'cart-product-image'>
+                        </td>
+                        <td>
+                            {{item.product.name}}
+                        </td>
+                        <td>
+                            Rs.{{item.product.price}}
+                        </td>
+                        <td>
+                            <div style="display:flex;align-items:center;justify-content:center;">
+                                <button data-product={{item.product.id}} data-user={{request.user}} data-action="add" class="cart-button plus">+</button>
+                                <div class='item-product-quantity'>{{item.quantity}}</div>
+                                <button data-product={{item.product.id}} data-user={{request.user}} data-action="remove" class="cart-button minus">-</button>
+                            </div>
+                        </td>
+                        <td>
+                            {{item.total}}
+                        </td>
+                    </tr>
+                {% endfor %}
+                {% else %}
+                <tr>
+                    <td colspan=5>No order has been placed</td>
+                </tr>
+                {% endif %}
+            </tbody>
+        </table>
+        <a href="{% url 'checkout' %}"><button type='submit' data-cart={{cart.id}} class='checkout-btn'>Checkout</button></a>
+    </div>
+{% endblock %}
