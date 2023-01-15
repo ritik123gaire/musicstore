@@ -141,3 +141,17 @@ def register(request):
 def LogoutPage(request):
     logout(request)
     return redirect('login-page')
+
+def Category(request):
+    return render(request,'pages/category.html')
+
+# def search(request, query):
+#     products = Product.objects.filter(name__icontains=query)
+#     return render(request, 'search_results.html', {'products': products})
+
+def search(request):
+    query = request.GET.get('query', '')
+    if not query:
+        return render(request, 'pages/search_results.html', {'products': []})
+    products = Product.objects.filter(name__icontains=query)
+    return render(request, 'pages/search_results.html', {'products': products})

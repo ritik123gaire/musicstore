@@ -1,12 +1,12 @@
 {% extends 'base.html' %}
-{% load static %}
+
 {% block content %}
 
 <style>
     .card-items,.card-total{
         width: 60%;
         font-weight:bold;
-        font-size: 22px;
+        font-size: 17px;
         margin-top: 20px;
         margin-left:auto;
         margin-right:auto;
@@ -30,7 +30,7 @@
     }
     th{
         padding-top: 12px;
-        padding-bottom: 12px;
+        padding-bottom: 19px;
         background-color: #04AA6D;
         color: white;
     }
@@ -47,18 +47,37 @@
     }
     
     .checkout-btn{
-        float:right;
+        float: inline-end;
         height: 50px;
         font-size: 18px;
-        padding: 10px;
-        margin-top:10px;
+        padding: 7px;
+        border:none;
         background: #20ce7E;
-        border: none;
         border-radius: 3px;
         color: white;
     }
+.cart-button.plus{
+    font-size:larger;
+        color:white;
+        background-color: green;
+        padding: 8px;
+        border:none;
+        padding: 4px;
+        border-radius: 3px;
+        text-align:center;
+       
+}
+   .cart-button.minus{
+        font-size:larger;
+        color:white;
+        background-color: red;
+        border:none;
+        padding: 8px;
+        border-radius: 3px;
+    }
 
 </style>
+<div>
 
     <div class='card-items'>
         Cart Items: {{cart.cart_items}}
@@ -92,23 +111,30 @@
                         </td>
                         <td>
                             <div style="display:flex;align-items:center;justify-content:center;">
-                                <button data-product={{item.product.id}} data-user={{request.user}} data-action="add" class="cart-button plus">+</button>
+                                <button data-product={{item.product.id}} data-user={{request.user}} data-action="add" class="cart-button plus co-l ai-c jc-c">+</button>
                                 <div class='item-product-quantity'>{{item.quantity}}</div>
-                                <button data-product={{item.product.id}} data-user={{request.user}} data-action="remove" class="cart-button minus">-</button>
+                                <button data-product={{item.product.id}} data-user={{request.user}} data-action="remove" class="cart-button minus plus co-l ai-c jc-c">-</button>
                             </div>
                         </td>
                         <td>
                             {{item.total}}
+                            
                         </td>
+                        
                     </tr>
+                  
                 {% endfor %}
                 {% else %}
                 <tr>
                     <td colspan=5>No order has been placed</td>
                 </tr>
                 {% endif %}
+                
             </tbody>
+            
         </table>
-        <a href="{% url 'checkout' %}"><button type='submit' data-cart={{cart.id}} class='checkout-btn'>Checkout</button></a>
+        <a href="{% url 'checkout' %}"><button type='submit' data-cart={{cart.id}} class='checkout-btn btn-red ai-c py-2'>Checkout</button></a>
     </div>
+    
+</div>
 {% endblock %}

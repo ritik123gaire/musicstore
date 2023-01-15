@@ -1,19 +1,7 @@
 {% load static %}
 <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 
-<!-- <style>
-    a:link, a:visited{
-        text-decoration:none;
-        color:white;
-    }
 
-    a:hover{
-        color: yellow;
-    }
-
-    
-
-</style> -->
 
 <header class="bg-dark w-100">
 <nav class="nav-bar ai-c jc-sb py-1 max-w-80 w-90">
@@ -43,7 +31,7 @@
               </div>
             </a>
 
-            <a class="nav__menu__item" href="">
+            <a class="nav__menu__item" href="{% url 'category_item' %}">
                 <div class="nav__menu__item co-l ai-c">
                   <div class="nav__menu__item-icon mr-2">
                     <i class="fas fa-record-vinyl"></i>
@@ -115,75 +103,9 @@
 </nav>
 </header>
 
-    <!-- <div class='nav-items'>
-        Category
-    </div> -->
-    <!-- {% if user.is_authenticated %}
-    <div class='nav-item'>
-        <a href="{% url 'logout' %}">Logout</a> -->
-    </div>
-    {% else %}
-    <!-- <div class='nav-items'>
-        <a href="{% url 'login-page' %}">Login</a>
-    </div>
-    <div class='nav-items'>
-        <a href="{% url 'register-page' %}">Register</a>
-    </div> -->
-    {% endif %}
-    <!-- <div class='nav-items'>
-        <a href="{% url 'cart' %}">Cart</a>
-    </div> -->
    
     
-</nav>
-
-
-
-<!-- 
-{% load static %}
-
-<style>
-    a:link, a:visited{
-        text-decoration:none;
-        color:white;
-    }
-
-    a:hover{
-        color: yellow;
-    }
-
-    
-
-</style>
 
 
 
 
-<nav class='navbar'>
-    <div class='nav-items'>
-        <a href="{% url 'home' %}">Home</a>
-    </div>
-    <div class='nav-items'>
-        Category
-    </div>
-    {% if user.is_authenticated %}
-    <div class='nav-item'>
-        <a href="{% url 'logout' %}">Logout</a>
-    </div>
-    {% else %}
-    <div class='nav-items'>
-        <a href="{% url 'login-page' %}">Login</a>
-    </div>
-    <div class='nav-items'>
-        <a href="{% url 'register-page' %}">Register</a>
-    </div>
-    {% endif %}
-    <div class='nav-items'>
-        <a href="{% url 'cart' %}">Cart</a>
-    </div>
-    <h1 style="margin-left:auto; margin-right:auto;font-size: 30px;">MUSICIFY</h1>
-    <div class="nav-items searchbar">
-        <input type="text" placeholder="Search Here..." style="margin-left:20px;height:30px; border-radius: 3px; width: 400px;"/>
-        <input type="submit" value="Search" style="margin-right:auto; height:32px; border-radius: 3px; width: 100px; "/>
-    </div>
-</nav> -->

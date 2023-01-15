@@ -17,11 +17,12 @@ $(
         let csrftoken = getCookie('csrftoken');
 
         $(".cart-button").click(function(){
+
+           
             let productId = this.dataset.product
             let action = this.dataset.action
             let user = this.dataset.user
             console.log(productId," ",action," ",user)
-
             updateCartItem(productId,action)
         })
 
