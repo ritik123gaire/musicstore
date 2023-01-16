@@ -1776,5 +1776,11 @@ label {
   color: white;
 }
 
+.nav__menu__item:active {
+  background-color: #f5f5f5;
+  border-radius: 10px;
+  transform: scale(1.1);
+  transition: all 0.2s ease-in-out;
+  }
 
 }

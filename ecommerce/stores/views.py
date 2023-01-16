@@ -142,12 +142,13 @@ def LogoutPage(request):
     logout(request)
     return redirect('login-page')
 
-def Category(request):
-    return render(request,'pages/category.html')
+def category(request):
+    return render(request, 'pages/category.html')
 
-# def search(request, query):
-#     products = Product.objects.filter(name__icontains=query)
-#     return render(request, 'search_results.html', {'products': products})
+
+def category_view(request, category):
+    products = Product.objects.filter(category=category)
+    return render(request, 'pages/category.html', {'products': products, 'category': category})
 
 def search(request):
     query = request.GET.get('query', '')
