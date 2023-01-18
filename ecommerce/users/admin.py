@@ -3,6 +3,11 @@ from django.contrib.auth.admin import UserAdmin
 from .models import User
 from .forms import *
 
+
+admin.site.site_header = "Musicify Admin"
+admin.site.index_title = "Welcome to Musicify"
+admin.site.site_title = "Musicify"
+
 class CustomUserAdmin(UserAdmin):
     add_form = CustomUserCreationForm
     form = CustomUserChangeForm

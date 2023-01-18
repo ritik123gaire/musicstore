@@ -10,58 +10,38 @@
         <i class="fas fa-guitar mr-4 co-l" aria-hidden="true"></i>
         <h5>Acoustic Guitars</h5>
         <p class="my-0 ml-5 co-l f-hl">
-          (Classic guitars, flamenco guitars and folk guitars.)
+          ( Classic guitars, Electric guitars and folk guitars. )
         </p>
       </div>
-      <div class="products__display__cards ai-c jc-sb">
-        <div class="products__display__cards-item">
-          <div class="products__display__cards-item--img h-50"></div>
-          <div class="products__display__cards-item--content h-50 mx-3 pt-3">
-            <h6 class="co-dt">Yamaha Apx 1000 Acoustic Guitar</h6>
-            <p class="co-r f-gb my-0">Used</p>
-            <span class="co-l">From:<span class="co-dt"> Caraguatatuba, BR</span></span>
-            <div class="ai-c jc-sb mt-2">
-              <div class="plus co-l ai-c jc-c">+</div>
-              <div class="price co-r f-hm">$1000</div>
-            </div>
+      
+
+      <div class=" products__display__cards ai-c jc-sb">
+      {% for product in products %}
+
+      {% if product.category == "Guitar" %}
+          <div class="products__display__cards-item">
+              <div class="products__display__cards-item--img h-50"><img src={{product.image.url}} alt="" class='product-image'  style="width:196px;height: 138px;"> </div>
+              <div class="products__display__cards-item--content h-50 mx-3 pt-3">
+                  <h6 class="co-dt">{{product.name}}</h6>
+                  <p>{{product.category}}</p>
+                  <div class="ai-c jc-sb mt-2">
+                      <div class="price co-r f-hm">RS {{product.price}}</div>
+                      {% if user.is_authenticated %}
+                      <button class="cart-button btn-transparent w-50" data-product={{product.id}} data-user={{request.user}} data-action="add" onclick="alert('Product added to cart')">Add</button>
+                      {% else %}
+                      <a href="{% url 'login-page' %}" class="btn-transparent w-50">Add</a>
+                      {% endif %}
+                  </div>
+              </div>
           </div>
-        </div>
-        <div class="products__display__cards-item">
-          <div class="products__display__cards-item--img h-50"></div>
-          <div class="products__display__cards-item--content h-50 mx-3 pt-3">
-            <h6 class="co-dt">Yamaha Apx 1000 Acoustic Guitar</h6>
-            <p class="co-r f-gb my-0">Used</p>
-            <span class="co-l">From:<span class="co-dt"> Caraguatatuba, BR</span></span>
-            <div class="ai-c jc-sb mt-2">
-              <div class="plus co-l ai-c jc-c">+</div>
-              <div class="price co-r f-hm">$1000</div>
-            </div>
-          </div>
-        </div>
-        <div class="products__display__cards-item">
-          <div class="products__display__cards-item--img h-50"></div>
-          <div class="products__display__cards-item--content h-50 mx-3 pt-3">
-            <h6 class="co-dt">Yamaha Apx 1000 Acoustic Guitar</h6>
-            <p class="co-r f-gb my-0">Used</p>
-            <span class="co-l">From:<span class="co-dt"> Caraguatatuba, BR</span></span>
-            <div class="ai-c jc-sb mt-2">
-              <div class="plus co-l ai-c jc-c">+</div>
-              <div class="price co-r f-hm">$1000</div>
-            </div>
-          </div>
-        </div>
-        <div class="products__display__cards-item">
-          <div class="products__display__cards-item--img h-50"></div>
-          <div class="products__display__cards-item--content h-50 mx-3 pt-3">
-            <h6 class="co-dt">Yamaha Apx 1000 Acoustic Guitar</h6>
-            <p class="co-r f-gb my-0">Used</p>
-            <span class="co-l">From:<span class="co-dt"> Caraguatatuba, BR</span></span>
-            <div class="ai-c jc-sb mt-2">
-              <div class="plus co-l ai-c jc-c">+</div>
-              <div class="price co-r f-hm">$1000</div>
-            </div>
-          </div>
-        </div>
+          
+
+    {% endif %}
+  {% endfor %}
+</div>
+
+
+        
         
       </div>
     </div>
@@ -70,237 +50,129 @@
         <i class="fas fa-drum mr-4 co-l" aria-hidden="true"></i>
         <h5>Drumset</h5>
         <p class="my-0 ml-5 co-l f-hl">
-          (Acoustic Drum Sets,Electronic drum sets,Hybrid drum sets)
+          ( Acoustic Drum Sets,Electronic drum sets,Cajons )
         </p>
       </div>
+
       <div class="products__display__cards ai-c jc-sb">
-        <div class="products__display__cards-item">
-          <div class="products__display__cards-item--img h-50"></div>
-          <div class="products__display__cards-item--content h-50 mx-3 pt-3">
-            <h6 class="co-dt">Yamaha Apx 1000 Acoustic Guitar</h6>
-            <p class="co-r f-gb my-0">Used</p>
-            <span class="co-l">From:<span class="co-dt"> Caraguatatuba, BR</span></span>
-            <div class="ai-c jc-sb mt-2">
-              <div class="plus co-l ai-c jc-c">+</div>
-              <div class="price co-r f-hm">$1000</div>
-            </div>
+      {% for product in products %}
+      {% if product.category == "Drums" %}
+          <div class="products__display__cards-item">
+              <div class="products__display__cards-item--img h-50"><img src={{product.image.url}} alt="" class='product-image'  style="width:196px;height: 138px;"> </div>
+              <div class="products__display__cards-item--content h-50 mx-3 pt-3">
+                  <h6 class="co-dt">{{product.name}}</h6>
+                  <p>{{product.category}}</p>
+                  <div class="ai-c jc-sb mt-2">
+                      <div class="price co-r f-hm">RS {{product.price}}</div>
+                      {% if user.is_authenticated %}
+                      <button class="cart-button btn-transparent w-50" data-product={{product.id}} data-user={{request.user}} data-action="add" onclick="alert('Product added to cart')">Add</button>
+                      {% else %}
+                      <a href="{% url 'login-page' %}" class="btn-transparent w-50">Add</a>
+                      {% endif %}
+                  </div>
+              </div>
           </div>
-        </div>
-        <div class="products__display__cards-item">
-          <div class="products__display__cards-item--img h-50"></div>
-          <div class="products__display__cards-item--content h-50 mx-3 pt-3">
-            <h6 class="co-dt">Yamaha Apx 1000 Acoustic Guitar</h6>
-            <p class="co-r f-gb my-0">Used</p>
-            <span class="co-l">From:<span class="co-dt"> Caraguatatuba, BR</span></span>
-            <div class="ai-c jc-sb mt-2">
-              <div class="plus co-l ai-c jc-c">+</div>
-              <div class="price co-r f-hm">$1000</div>
-            </div>
-          </div>
-        </div>
-        <div class="products__display__cards-item">
-          <div class="products__display__cards-item--img h-50"></div>
-          <div class="products__display__cards-item--content h-50 mx-3 pt-3">
-            <h6 class="co-dt">Yamaha Apx 1000 Acoustic Guitar</h6>
-            <p class="co-r f-gb my-0">Used</p>
-            <span class="co-l">From:<span class="co-dt"> Caraguatatuba, BR</span></span>
-            <div class="ai-c jc-sb mt-2">
-              <div class="plus co-l ai-c jc-c">+</div>
-              <div class="price co-r f-hm">$1000</div>
-            </div>
-          </div>
-        </div>
-        <div class="products__display__cards-item">
-          <div class="products__display__cards-item--img h-50"></div>
-          <div class="products__display__cards-item--content h-50 mx-3 pt-3">
-            <h6 class="co-dt">Yamaha Apx 1000 Acoustic Guitar</h6>
-            <p class="co-r f-gb my-0">Used</p>
-            <span class="co-l">From:<span class="co-dt"> Caraguatatuba, BR</span></span>
-            <div class="ai-c jc-sb mt-2">
-              <div class="plus co-l ai-c jc-c">+</div>
-              <div class="price co-r f-hm">$1000</div>
-            </div>
-          </div>
-        </div>
-        
-      </div>
-    </div>
-    <div class="products__display w-90 center mt-5 mb-4">
-      <div class="products__display__header ai-c mb-3 co-d">
-        <i class="fas fa-guitar mr-4 co-l" aria-hidden="true"></i>
-        <h5>Bass Guitars</h5>
-        <p class="my-0 ml-5 co-l f-hl">
-          (Electric Bass guitars, Acoustic Bass guitars and Short-scale Bass.)
-        </p>
-      </div>
-      <div class="products__display__cards ai-c jc-sb">
-        <div class="products__display__cards-item">
-          <div class="products__display__cards-item--img h-50"></div>
-          <div class="products__display__cards-item--content h-50 mx-3 pt-3">
-            <h6 class="co-dt">Yamaha Apx 1000 Acoustic Guitar</h6>
-            <p class="co-r f-gb my-0">Used</p>
-            <span class="co-l">From:<span class="co-dt"> Caraguatatuba, BR</span></span>
-            <div class="ai-c jc-sb mt-2">
-              <div class="plus co-l ai-c jc-c">+</div>
-              <div class="price co-r f-hm">$1000</div>
-            </div>
-          </div>
-        </div>
-        <div class="products__display__cards-item">
-          <div class="products__display__cards-item--img h-50"></div>
-          <div class="products__display__cards-item--content h-50 mx-3 pt-3">
-            <h6 class="co-dt">Yamaha Apx 1000 Acoustic Guitar</h6>
-            <p class="co-r f-gb my-0">Used</p>
-            <span class="co-l">From:<span class="co-dt"> Caraguatatuba, BR</span></span>
-            <div class="ai-c jc-sb mt-2">
-              <div class="plus co-l ai-c jc-c">+</div>
-              <div class="price co-r f-hm">$1000</div>
-            </div>
-          </div>
-        </div>
-        <div class="products__display__cards-item">
-          <div class="products__display__cards-item--img h-50"></div>
-          <div class="products__display__cards-item--content h-50 mx-3 pt-3">
-            <h6 class="co-dt">Yamaha Apx 1000 Acoustic Guitar</h6>
-            <p class="co-r f-gb my-0">Used</p>
-            <span class="co-l">From:<span class="co-dt"> Caraguatatuba, BR</span></span>
-            <div class="ai-c jc-sb mt-2">
-              <div class="plus co-l ai-c jc-c">+</div>
-              <div class="price co-r f-hm">$1000</div>
-            </div>
-          </div>
-        </div>
-        <div class="products__display__cards-item">
-          <div class="products__display__cards-item--img h-50"></div>
-          <div class="products__display__cards-item--content h-50 mx-3 pt-3">
-            <h6 class="co-dt">Yamaha Apx 1000 Acoustic Guitar</h6>
-            <p class="co-r f-gb my-0">Used</p>
-            <span class="co-l">From:<span class="co-dt"> Caraguatatuba, BR</span></span>
-            <div class="ai-c jc-sb mt-2">
-              <div class="plus co-l ai-c jc-c">+</div>
-              <div class="price co-r f-hm">$1000</div>
-            </div>
+    {% endif %}
+  {% endfor %}
+</div>
           </div>
         </div>
 
         <div class="products__display w-90 center mt-5 mb-4">
           <div class="products__display__header ai-c mb-3 co-d">
-            <i class="fa-solid fa-flute mr-4 co-l" aria-hidden="true"></i>
+            <i class="material-icons-outlined" aria-hidden="true"></i>
+            
             <h5>Pipes</h5>
             <p class="my-0 ml-5 co-l f-hl">
-              (Electric Bass guitars, Acoustic Bass guitars and Short-scale Bass.)
+              ( Flutes,Harmonica )
             </p>
           </div>
           <div class="products__display__cards ai-c jc-sb">
-            <div class="products__display__cards-item">
-              <div class="products__display__cards-item--img h-50"></div>
-              <div class="products__display__cards-item--content h-50 mx-3 pt-3">
-                <h6 class="co-dt">Yamaha Apx 1000 Acoustic Guitar</h6>
-                <p class="co-r f-gb my-0">Used</p>
-                <span class="co-l">From:<span class="co-dt"> Caraguatatuba, BR</span></span>
-                <div class="ai-c jc-sb mt-2">
-                  <div class="plus co-l ai-c jc-c">+</div>
-                  <div class="price co-r f-hm">$1000</div>
-                </div>
-              </div>
-            </div>
-            <div class="products__display__cards-item">
-              <div class="products__display__cards-item--img h-50"></div>
-              <div class="products__display__cards-item--content h-50 mx-3 pt-3">
-                <h6 class="co-dt">Yamaha Apx 1000 Acoustic Guitar</h6>
-                <p class="co-r f-gb my-0">Used</p>
-                <span class="co-l">From:<span class="co-dt"> Caraguatatuba, BR</span></span>
-                <div class="ai-c jc-sb mt-2">
-                  <div class="plus co-l ai-c jc-c">+</div>
-                  <div class="price co-r f-hm">$1000</div>
-                </div>
-              </div>
-            </div>
-            <div class="products__display__cards-item">
-              <div class="products__display__cards-item--img h-50"></div>
-              <div class="products__display__cards-item--content h-50 mx-3 pt-3">
-                <h6 class="co-dt">Yamaha Apx 1000 Acoustic Guitar</h6>
-                <p class="co-r f-gb my-0">Used</p>
-                <span class="co-l">From:<span class="co-dt"> Caraguatatuba, BR</span></span>
-                <div class="ai-c jc-sb mt-2">
-                  <div class="plus co-l ai-c jc-c">+</div>
-                  <div class="price co-r f-hm">$1000</div>
-                </div>
-              </div>
-            </div>
-            <div class="products__display__cards-item">
-              <div class="products__display__cards-item--img h-50"></div>
-              <div class="products__display__cards-item--content h-50 mx-3 pt-3">
-                <h6 class="co-dt">Yamaha Apx 1000 Acoustic Guitar</h6>
-                <p class="co-r f-gb my-0">Used</p>
-                <span class="co-l">From:<span class="co-dt"> Caraguatatuba, BR</span></span>
-                <div class="ai-c jc-sb mt-2">
-                  <div class="plus co-l ai-c jc-c">+</div>
-                  <div class="price co-r f-hm">$1000</div>
-                </div>
-              </div>
-            </div>
-        
-            <div class="products__display w-90 center mt-5 mb-4">
-              <div class="products__display__header ai-c mb-3 co-d">
-                <i class="fas fa-microphone mr-4 co-l" aria-hidden="true"></i>
-                <h5>Equipments</h5>
-                <p class="my-0 ml-5 co-l f-hl">
-                  (Microphone ,Headphone and Equilizer)
-                </p>
-              </div>
-              <div class="products__display__cards ai-c jc-sb">
-                <div class="products__display__cards-item">
-                  <div class="products__display__cards-item--img h-50"></div>
+          {% for product in products %}
+          {% if product.category == "Flutes" %}
+              <div class="products__display__cards-item">
+                  <div class="products__display__cards-item--img h-50"><img src={{product.image.url}} alt="" class='product-image'  style="width:196px;height: 138px;"> </div>
                   <div class="products__display__cards-item--content h-50 mx-3 pt-3">
-                    <h6 class="co-dt">Yamaha Apx 1000 Acoustic Guitar</h6>
-                    <p class="co-r f-gb my-0">Used</p>
-                    <span class="co-l">From:<span class="co-dt"> Caraguatatuba, BR</span></span>
-                    <div class="ai-c jc-sb mt-2">
-                      <div class="plus co-l ai-c jc-c">+</div>
-                      <div class="price co-r f-hm">$1000</div>
-                    </div>
+                      <h6 class="co-dt">{{product.name}}</h6>
+                      <p>{{product.category}}</p>
+                      <div class="ai-c jc-sb mt-2">
+                          <div class="price co-r f-hm">RS {{product.price}}</div>
+                          {% if user.is_authenticated %}
+                          <button class="cart-button btn-transparent w-50" data-product={{product.id}} data-user={{request.user}} data-action="add" onclick="alert('Product added to cart')">Add</button>
+                          {% else %}
+                          <a href="{% url 'login-page' %}" class="btn-transparent w-50">Add</a>
+                          {% endif %}
+                      </div>
                   </div>
+              </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+       </div>
+       <div class="products__display w-90 center mt-5 mb-4">
+        <div class="products__display__header ai-c mb-3 co-d">
+          <i class="fas fa-ruler-horizontal mr-4 co-l" aria-hidden="true"></i>
+          <h5>Piano</h5>
+          <p class="my-0 ml-5 co-l f-hl">
+            (Piano , Electric Keyboard)
+          </p>
+        </div>
+        <div class="products__display__cards ai-c jc-sb">
+        {% for product in products %}
+        {% if product.category == "Keyboard" %}
+            <div class="products__display__cards-item">
+                <div class="products__display__cards-item--img h-50"><img src={{product.image.url}} alt="" class='product-image'  style="width:196px;height: 138px;"> </div>
+                <div class="products__display__cards-item--content h-50 mx-3 pt-3">
+                    <h6 class="co-dt">{{product.name}}</h6>
+                    <p>{{product.category}}</p>
+                    <div class="ai-c jc-sb mt-2">
+                        <div class="price co-r f-hm">RS {{product.price}}</div>
+                        {% if user.is_authenticated %}
+                        <button class="cart-button btn-transparent w-50" data-product={{product.id}} data-user={{request.user}} data-action="add" onclick="alert('Product added to cart')">Add</button>
+                        {% else %}
+                        <a href="{% url 'login-page' %}" class="btn-transparent w-50">Add</a>
+                        {% endif %}
+                    </div>
                 </div>
-                <div class="products__display__cards-item">
-                  <div class="products__display__cards-item--img h-50"></div>
-                  <div class="products__display__cards-item--content h-50 mx-3 pt-3">
-                    <h6 class="co-dt">Yamaha Apx 1000 Acoustic Guitar</h6>
-                    <p class="co-r f-gb my-0">Used</p>
-                    <span class="co-l">From:<span class="co-dt"> Caraguatatuba, BR</span></span>
-                    <div class="ai-c jc-sb mt-2">
-                      <div class="plus co-l ai-c jc-c">+</div>
-                      <div class="price co-r f-hm">$1000</div>
-                    </div>
-                  </div>
-                </div>
-                <div class="products__display__cards-item">
-                  <div class="products__display__cards-item--img h-50"></div>
-                  <div class="products__display__cards-item--content h-50 mx-3 pt-3">
-                    <h6 class="co-dt">Yamaha Apx 1000 Acoustic Guitar</h6>
-                    <p class="co-r f-gb my-0">Used</p>
-                    <span class="co-l">From:<span class="co-dt"> Caraguatatuba, BR</span></span>
-                    <div class="ai-c jc-sb mt-2">
-                      <div class="plus co-l ai-c jc-c">+</div>
-                      <div class="price co-r f-hm">$1000</div>
-                    </div>
-                  </div>
-                </div>
-                <div class="products__display__cards-item">
-                  <div class="products__display__cards-item--img h-50"></div>
-                  <div class="products__display__cards-item--content h-50 mx-3 pt-3">
-                    <h6 class="co-dt">Yamaha Apx 1000 Acoustic Guitar</h6>
-                    <p class="co-r f-gb my-0">Used</p>
-                    <span class="co-l">From:<span class="co-dt"> Caraguatatuba, BR</span></span>
-                    <div class="ai-c jc-sb mt-2">
-                      <div class="plus co-l ai-c jc-c">+</div>
-                      <div class="price co-r f-hm">$1000</div>
-                    </div>
-                  </div>
+            </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>
+     </div>
 
-                  </div>
-                
+     <div class="products__display w-90 center mt-5 mb-4">
+      <div class="products__display__header ai-c mb-3 co-d">
+        <i class="fas fa-headphones mr-4 co-l" aria-hidden="true"></i>
+        <h5>Equipments</h5>
+        <p class="my-0 ml-5 co-l f-hl">
+          (Equipments and Accessories)
+        </p>
       </div>
+      <div class="products__display__cards ai-c jc-sb">
+      {% for product in products %}
+      {% if product.category == "Studio Equipments" %}
+          <div class="products__display__cards-item">
+              <div class="products__display__cards-item--img h-50"><img src={{product.image.url}} alt="" class='product-image'  style="width:196px;height: 138px;"> </div>
+              <div class="products__display__cards-item--content h-50 mx-3 pt-3">
+                  <h6 class="co-dt">{{product.name}}</h6>
+                  <p>{{product.category}}</p>
+                  <div class="ai-c jc-sb mt-2">
+                      <div class="price co-r f-hm">RS {{product.price}}</div>
+                      {% if user.is_authenticated %}
+                      <button class="cart-button btn-transparent w-50" data-product={{product.id}} data-user={{request.user}} data-action="add" onclick="alert('Product added to cart')">Add</button>
+                      {% else %}
+                      <a href="{% url 'login-page' %}" class="btn-transparent w-50">Add</a>
+                      {% endif %}
+                  </div>
+              </div>
+          </div>
+    {% endif %}
+  {% endfor %}
+</div>
+</div>
+   </div>
     </div>
   </div>
 {% endblock%}

@@ -3,10 +3,10 @@ from django.db import models
 
 class Product(models.Model):
     name=models.CharField(max_length=26,null=False)
-    CATEGORIES=[('Guitar',' Acoustic Guitar'),
-                ('Keyboard','Ukelele'),
+    CATEGORIES=[('Guitar',' Acoustic Guitar'),('Guitar',' Electric Guitar'),
+                ('Keyboard','Electric Keyboards'),
                 ('Drums','Drum Set'),
-                ('Cajon','Flute'),
+                ('Flutes','Flute'),
                 ('Steel','Violin'),
                 ('Studio Equipments',' Equipments'),
                 ('Pedals','Bass Guitars')]

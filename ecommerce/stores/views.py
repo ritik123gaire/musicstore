@@ -143,7 +143,11 @@ def LogoutPage(request):
     return redirect('login-page')
 
 def category(request):
-    return render(request, 'pages/category.html')
+    product = Product.objects.all()
+    context = {
+        "products" : product
+    }
+    return render(request, 'pages/category.html',context)
 
 
 def category_view(request, category):
