@@ -132,11 +132,17 @@ def register(request):
         if forms.is_valid():
             forms.save()
             return redirect('login-page')
+        else:
+            context = {
+                "form" :forms
+            }
+            return render(request,"pages/register.html",context)
 
     context = {
         "form" :forms
     }
     return render(request,"pages/register.html",context)
+   
 
 def LogoutPage(request):
     logout(request)

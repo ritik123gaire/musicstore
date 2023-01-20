@@ -90,7 +90,9 @@
           <div class="products__display__cards ai-c jc-sb">
           {% for product in products %}
           {% if product.category == "Flutes" %}
-              <div class="products__display__cards-item">
+          
+              <div class="products__display__cards-item ">
+                
                   <div class="products__display__cards-item--img h-50"><img src={{product.image.url}} alt="" class='product-image'  style="width:196px;height: 138px;"> </div>
                   <div class="products__display__cards-item--content h-50 mx-3 pt-3">
                       <h6 class="co-dt">{{product.name}}</h6>
@@ -102,8 +104,10 @@
                           {% else %}
                           <a href="{% url 'login-page' %}" class="btn-transparent w-50">Add</a>
                           {% endif %}
-                      </div>
+                     
                   </div>
+                </div>
+                 
               </div>
         {% endif %}
       {% endfor %}

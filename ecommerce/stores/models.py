@@ -14,6 +14,8 @@ class Product(models.Model):
     image = models.ImageField(upload_to='uploads/products',null=True)
     price=models.IntegerField()
     date_added=models.DateField(auto_now_add=True)
+    product_info = models.TextField()
+
 
     def __str__(self):
         return self.name

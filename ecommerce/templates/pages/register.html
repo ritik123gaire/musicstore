@@ -25,7 +25,7 @@
         display:inline-block;
         width: 100px;
         text-align: left;
-        font-size:50px;
+        font-size:45px;
         padding:auto;
         
     }
@@ -67,6 +67,16 @@
         text-decoration:none;
     }
    
+   .error
+   {
+    font-size: 14px;
+    padding:  20px;
+    padding-left: 50px;
+    color: rgb(199, 24, 24);
+    text-align: justify;
+    
+    
+   }
 </style>
 
     <div class="container">
@@ -97,12 +107,18 @@
             </div>
             <div>
                 <label for="password">{{ form.password1.label }}</label>:
-                {{ form.password1 }}
+               {{ form.password1 }}
             </div>
-        
+
+           
             <div>
                 <label for="repassword">{{ form.password2.label }}</label>:
                 {{ form.password2 }}
+            {% if form.password2.errors %}
+                {% for error in form.password2.errors %}
+                    <div class="error">{{ error }}</div>
+                {% endfor %}
+            {% endif %}
             </div>
             <input type="submit" name='Register'>
             <p>Already Have an Account? <a href="{% url 'login-page' %}" class="div-link">Login here</a></p>
