@@ -8,7 +8,7 @@ import json
 import requests
 
 def getProducts(request):
-    product = Product.objects.all()
+    product = Product.objects.all().order_by('-date_added')
     context = {
         "products" : product
     }
@@ -166,3 +166,10 @@ def search(request):
         return render(request, 'pages/search_results.html', {'products': []})
     products = Product.objects.filter(name__icontains=query)
     return render(request, 'pages/search_results.html', {'products': products})
+
+def productdetails(request,pk):
+    product = Product.objects.get(id=pk)
+    context = {
+        "product" : product
+    }
+    return render(request, 'pages/product.html',context)

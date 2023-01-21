@@ -27,27 +27,21 @@
         <div class="footer__main--title">CATEGORIES</div>
         <div class="jc-sb">
           <ul class="links">
-            <li><a aria-label="this is a button" href="#">Guitars</a></li>
-            <li><a aria-label="this is a button" href="#">Violins</a></li>
-            <li><a aria-label="this is a button" href="#">Flutes</a></li>
-            <li><a aria-label="this is a button" href="#">Pianos</a></li>
-            <li><a aria-label="this is a button" href="#">Equipments</a></li>
+            <li><a aria-label="this is a button" href="{% url 'category' %}">Guitars</a></li>
+            
+            <li><a aria-label="this is a button" href="{% url 'category' %}">Flutes</a></li>
+            <li><a aria-label="this is a button" href="{% url 'category' %}">Pianos</a></li>
+            <li><a aria-label="this is a button" href="{% url 'category' %}">Equipments</a></li>
           </ul>
-          <ul class="links">
-            <li><a aria-label="this is a button" href="#">Guitars</a></li>
-            <li><a aria-label="this is a button" href="#">Violins</a></li>
-            <li><a aria-label="this is a button" href="#">Flutes</a></li>
-            <li><a aria-label="this is a button" href="#">Pianos</a></li>
-            <li><a aria-label="this is a button" href="#">Equipments</a></li>
-          </ul>
+          
         </div>
       </div>
       <div class="footer__main__navigation px-3">
         <div class="footer__main--title">NAVIGATION</div>
         <ul class="links">
-          <li><a href="#">Home</a></li>
-          <li><a href="#">Sign In</a></li>
-          <li><a href="#">Sign Up</a></li>
+          <li><a href="{% url 'home' %}">Home</a></li>
+          <li><a href="{% url 'login-page' %}">Sign In</a></li>
+          <li><a href="{% url 'register-page' %}">Sign Up</a></li>
           <li><a href="#">Terms & Conditions</a></li>
           
         </ul>

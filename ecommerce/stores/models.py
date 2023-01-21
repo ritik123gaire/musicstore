@@ -15,6 +15,7 @@ class Product(models.Model):
     price=models.IntegerField()
     date_added=models.DateField(auto_now_add=True)
     product_info = models.TextField()
+    brand = models.CharField(max_length=50)
 
 
     def __str__(self):

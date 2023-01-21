@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<!--header -->
+<header class="upper-page container-fluid bg-red py-3">
+  <img class="watermark" src="{% static 'images/waves-icon.png' %}" alt="wave-big" />
+  <div class="z-2 container max-w-80 w-90">
+      <div class="container flex-col">
+          <div class="brand-name--lg-w-page w-mc">MUSICIFY</div>
+          <h1 class="co-w f-hl w-mc">
+              Your marketplace for buying Musical Instruments
+          </h1>
+      </div>
+
+      <div class="search container-fluid ai-c jc-sb w-100">
+          <form class="search container-fluid ai-c jc-sb w-100" action="{% url 'search' %}" method="get">
+              <div class="search-top h-search ai-c">
+                  <div class="search__dropdown bg-white h-100 w-20 bord-r-red ai-c pl-1 pr-3 d-none d-md-flex">
+                      <div class="search__dropdown-icon co-dt m-2">
+                          <i class="fas "></i>
+                      </div>
+                      <div class="search__dropdown-text co-dt f-gl">Instruments</div>
+                  </div>
+                  <div class="search__question bg-white h-100 bord-r-red co-l ai-c f-gl pl-2">
+                      What do you search for?
+                  </div>
+                  <input type="text" name="query" placeholder="Type Here" class="search__input h-100 co-l" />
+              </div>
+
+              <div class="search-btn-div h-100">
+                  <button type="submit" class="search__button btn-dark w-100">
+                    <b> Search </b><i class="fa fa-search pl-4"></i>
+                  </button>
+              </div>
+          </form>
+      </div>
+  </div>
+</header>
+
+
+<!-- slider -->
+
+<!-- new -->
+<div class="hotads py-3 co-l f-hm">
+  
+    <div class="hotads__main flex-col w-90 center h-100 px-3">
+      <div class="hotads__main_content jc-sb">
+        <div class="products__display__cards-item--img h-50"><img src={{product.image.url}} alt="" class='product-image'  style="width:262.84px;height: 216px;"> </div>
+        <div class="hotads__main_content-info py-3">
+          <h3 class="co-r f-hm">{{product.name}}</h3>
+          <div class="fixed-p">
+
+        <p class="fixed-p f-hl co-d">
+          {{product.product_info}}
+        </p>
+          </div>
+        <p class="co-d">Brand: <span class="co-l f-hl">{{product.brand}}</span></p>
+        <p class="mb-0 co-d">
+            Category: <span class="co-l f-hl">{{product.category}}</span>
+        </p>
+        <div class="hotads__main_content-info-button w-mc ai-c mt-2">
+          <button type="button" class="btn-red m-0 center ai-c py-2">{{product.price}}</button>
+          <!-- <button type="button" class="btn-red mx-0 ai-c">
+            <i class="fas fa-shopping-cart mr-2" aria-hidden="true"></i>
+            <span>ADD</span>
+          </button> -->
+          {% if user.is_authenticated %}
+                    <button class="cart-button btn-red mx-0 ai-c" data-product={{product.id}} data-user={{request.user}} data-action="add" 
+                    onclick="alert('Product added to cart')"><i class="fas fa-shopping-cart mr-2" aria-hidden="true"></i>Add to Cart</button>
+                    {% else %}
+                    <a href="{% url 'login-page' %}" class="btn-transparent w-50"><Add</a>
+                    {% endif %}
+          </div>
+          </div>
+       </div>
+       </div>
+       
+            
+            </div>
+            
+          
+
+
+
+{% endblock %}

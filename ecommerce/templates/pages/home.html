@@ -58,13 +58,13 @@
         <p class="fixed-p f-hl co-d">
           Lorem, ipsum dolor sit amet consectetur adipisicing elit.
           Reprehenderit alias tempora officia molestiae assumenda
-          ratione debitis ipsum explicabo voluptates nemo, sequi fugiat
+          ratione debitis ipsum explicabo voluptates nemo, sequi 
          
         </p>
           </div>
-        <p class="co-d">By: <span class="co-l f-hl">John Doe</span></p>
+        <p class="co-d">Brand: <span class="co-l f-hl">Flamenco</span></p>
         <p class="mb-0 co-d">
-          Location: <span class="co-l f-hl">Caraguatatuba, BR</span>
+          Category: <span class="co-l f-hl">Acoustic Guitar</span>
         </p>
         <div class="hotads__main_content-info-button w-mc ai-c mt-2">
           <button type="button" class="btn-red m-0 center ai-c py-2">$1050</button>
@@ -87,7 +87,7 @@
 <div class="products__display w-90 center mt-5">
     <div class="products__display__header ai-c mb-3 co-d">
       <i class="fas fa-guitar mr-4 co-l"></i>
-      <h5>Our Top Products</h5>
+      <h5>Our Latest Products</h5>
      
     </div>
 
@@ -97,9 +97,11 @@
 
         <div class="products__display__cards-item">
                 <div class="products__display__cards-item--img h-50"><img src={{product.image.url}} alt="" class='product-image'  style="width:196px;height: 138px;"> </div>
-               <div class="products__display__cards-item--content h-50 mx-3 pt-3">
+                
+                <button class="btn-transparent" onclick="location.href='{% url 'product' product.id %}'"><i class="fa fa-info-circle"></i></button>
+                <div class="products__display__cards-item--content h-50 mx-3 pt-3">
                 <h6 class="co-dt">{{product.name}}</h6>
-                <p f-gb my-0>{{product.category}}</p>
+                <!-- <p f-gb my-0>{{product.category}}</p> -->
                 <div class="ai-c jc-sb mt-2">
                     <div class="price co-r f-hm">RS {{product.price}}</div>
                     
@@ -112,8 +114,15 @@
                   
                     <!-- btn-transparent w-50 -->
                 </div>
-            </div>
+
+               
+
                 
+              
+                  
+
+            </div>
+            
         </div>
 
         {% endfor %}

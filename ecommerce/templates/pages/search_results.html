@@ -52,9 +52,11 @@
 
     <div class="products__display__cards-item">
             <div class="products__display__cards-item--img h-50"><img src={{product.image.url}} alt="" class='product-image'  style="width:196px;height: 138px;"> </div>
-           <div class="products__display__cards-item--content h-50 mx-3 pt-3">
+            <button class="btn-transparent" onclick="location.href='{% url 'product' product.id %}'"><i class="fa fa-info-circle"></i></button>
+            <div class="products__display__cards-item--content h-50 mx-3 pt-3">
+
             <h6 class="co-dt">{{product.name}}</h6>
-            <p>{{product.category}}</p>
+            
             <div class="ai-c jc-sb mt-2">
                 <div class="price co-r f-hm">USD {{product.price}}</div>
                 <button class="cart-button btn-transparent w-50" data-product={{product.id}} data-user={{request.user}} data-action="add"
