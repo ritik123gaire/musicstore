@@ -66,12 +66,18 @@
             <i class="fas fa-shopping-cart mr-2" aria-hidden="true"></i>
             <span>ADD</span>
           </button> -->
+
           {% if user.is_authenticated %}
                     <button class="cart-button btn-red mx-0 ai-c" data-product={{product.id}} data-user={{request.user}} data-action="add" 
                     onclick="alert('Product added to cart')"><i class="fas fa-shopping-cart mr-2" aria-hidden="true"></i>Add to Cart</button>
+
                     {% else %}
-                    <a href="{% url 'login-page' %}" class="btn-transparent w-50"><Add</a>
-                    {% endif %}
+                    
+
+                    <button onclick="location.href='{% url 'login-page' %}'"  class="btn-red m-0 center ai-c py-2"><i class="fas fa-shopping-cart mr-2" aria-hidden="true"></i>Add to Cart</button>
+            
+             {% endif %}
+                    
           </div>
           </div>
        </div>
