@@ -3,6 +3,41 @@
 
 {% block content %}
 
+<header class="upper-page container-fluid bg-red py-3">
+  <img class="watermark" src="{% static 'images/waves-icon.png' %}" alt="wave-big" />
+  <div class="z-2 container max-w-80 w-90">
+      <div class="container flex-col">
+          <div class="brand-name--lg-w-page w-mc">MUSICIFY</div>
+          <h1 class="co-w f-hl w-mc">
+              Your marketplace for buying Musical Instruments
+          </h1>
+      </div>
+
+      <div class="search container-fluid ai-c jc-sb w-100">
+          <form class="search container-fluid ai-c jc-sb w-100" action="{% url 'search' %}" method="get">
+              <div class="search-top h-search ai-c">
+                  <div class="search__dropdown bg-white h-100 w-20 bord-r-red ai-c pl-1 pr-3 d-none d-md-flex">
+                      <div class="search__dropdown-icon co-dt m-2">
+                          <i class="fas "></i>
+                      </div>
+                      <div class="search__dropdown-text co-dt f-gl">Instruments</div>
+                  </div>
+                  <div class="search__question bg-white h-100 bord-r-red co-l ai-c f-gl pl-2">
+                      What do you search for?
+                  </div>
+                  <input type="text" name="query" placeholder="Type Here" class="search__input h-100 co-l" />
+              </div>
+
+              <div class="search-btn-div h-100">
+                  <button type="submit" class="search__button btn-dark w-100">
+                    <b> Search </b><i class="fa fa-search pl-4"></i>
+                  </button>
+              </div>
+          </form>
+      </div>
+  </div>
+</header>
+
 
 <div class="products bg-lighter py-4">
     <div class="products__display w-90 center">

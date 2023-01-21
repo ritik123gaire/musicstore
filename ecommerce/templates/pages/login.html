@@ -22,7 +22,8 @@
     }
 
     p{
-        font-size: 20px;
+        font-size: 15px;
+        color:red;
     }
 
     input{
@@ -62,6 +63,9 @@
                         <div>
                             <input type='submit' value='Login' />
                         </div>
+                        {% if message %}
+                        <p class="error-message">{{ message }}</p>
+                        {% endif %}
                         Need an Account? <a href="{% url 'register-page' %}" class="div-link">Register here</a>
                 </form>
             <br>

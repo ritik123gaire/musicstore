@@ -107,6 +107,7 @@ def esewaverify(request):
 
 
 def LoginPage(request):
+    context = {}
     next = request.GET.get('next')
     if request.method =='POST':
         email = request.POST['email']
@@ -120,9 +121,8 @@ def LoginPage(request):
                 else:
                     return redirect('home')
             else:
-                return JsonResponse('Not Logged In')
-
-    return render(request,"pages/login.html",{})
+                context['message'] = 'Incorrect Email or Password'
+    return render(request,"pages/login.html",context)
     
 def register(request):
     forms = CustomUserCreationForm()
