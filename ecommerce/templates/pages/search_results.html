@@ -59,8 +59,12 @@
             
             <div class="ai-c jc-sb mt-2">
                 <div class="price co-r f-hm">USD {{product.price}}</div>
-                <button class="cart-button btn-transparent w-50" data-product={{product.id}} data-user={{request.user}} data-action="add"
-                onclick="alert('Product added to cart')" >Add</button>
+                {% if user.is_authenticated %}
+                    <button class="cart-button btn-transparent w-50" data-product={{product.id}} data-user={{request.user}} data-action="add" 
+                    onclick="alert('Product added to cart')">Add</button>
+                    {% else %}
+                    <a href="{% url 'login-page' %}" class="btn-transparent w-50">Add</a>
+                    {% endif %}
             </div>
         </div>
             
