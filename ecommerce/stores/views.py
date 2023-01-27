@@ -55,6 +55,7 @@ def createCartItem(request):
 
     return JsonResponse({'status': 200})
 
+
 @login_required(login_url='login-page')
 def checkout(request):
     user = User.objects.get(id = request.user.id)
@@ -66,10 +67,21 @@ def checkout(request):
         cart_data=request.POST['cart']
         cart_instance = Cart.objects.get(id=cart_data)
         if city_data and location_data and state_data and cart_instance:
-            ShippingLocation.objects.create(user = user,cart=cart_instance,city = city_data, location= location_data, state = state_data,delivery_status=False)
+            shipping_location, created = ShippingLocation.objects.update_or_create(
+                cart=cart_instance,
+                defaults={
+                    'user': user,
+                    'city': city_data, 
+                    'location': location_data, 
+                    'state': state_data,
+                    'delivery_status': False
+                }
+            )
             return redirect('payment')
 
     return render(request,"pages/checkout.html",{"cart":cart})
+
+
 
 @login_required(login_url='login-page')
 def payment(request):
