@@ -2,6 +2,7 @@
 {% load static %}
 {% block content %}
 
+
 <style>
     .container{
         display: block;
@@ -44,30 +45,46 @@
         background-color:#20ce7E;
         color: white;
         border: none;
+        width: 210px;
         border-radius: 3px;
+
     }
+    li{
+        color:red;
+        font-size: 15px;
+    }
+        
+    
 </style>
 
-    <div class="container">
-        <form action="" method='POST'>
-            <p>CheckOut Form</p>
-            <hr>
-            {% csrf_token %}
-            <div>
-                <label for="City">City: </label>
-                <input type="text" id="city" name="city">
-            </div>
-            <div>
-                <label for="State">State: </label>
-                <input type="text" id="state" name="state">
-            </div>
-            <div>
-                <label for="Location">Location: </label>
-                <input type="text" id="location" name="location">
-            </div>
-            <input type="hidden" id='cart' name='cart' value="{{cart.id}}">
-            <input type="submit" value='Proceed To Payment'>
-        </form>
-    </div>
+
+<div class="container mb-6">
+    <form action="" method='POST'>
+        <p>CheckOut Form</p>
+        <hr>
+        {% csrf_token %}
+        <div>
+            <label for="City">City: </label>
+            <input type="text" id="city" name="city">
+        </div>
+        <div>
+            <label for="State">State: </label>
+            <input type="text" id="state" name="state">
+        </div>
+        <div>
+            <label for="Location">Location: </label>
+            <input type="text" id="location" name="location">
+        </div>
+        <input type="hidden" id='cart' name='cart' value="{{cart.id}}">
+        <input type="submit" class=' btn-red  py-2' value='Proceed To Payment'>
+    </form>
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+</div>
 
 {% endblock  %}

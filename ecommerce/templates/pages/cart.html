@@ -77,9 +77,9 @@
     }
 
 </style>
-<div>
+<div class="mb-6">
 
-    <div class='card-items'>
+    <div class='card-items '>
         Cart Items: {{cart.cart_items}}
     </div>
     
@@ -124,6 +124,9 @@
                     </tr>
                   
                 {% endfor %}
+                <tr>
+                    <td><a href="{% url 'checkout' %}"><button type='submit' data-cart={{cart.id}} class='checkout-btn btn-red ai-c py-2'>Checkout</button></a></td></tr>
+                
                 {% else %}
                 <tr>
                     <td colspan=5>No order has been placed</td>
@@ -133,7 +136,7 @@
             </tbody>
             
         </table>
-        <a href="{% url 'checkout' %}"><button type='submit' data-cart={{cart.id}} class='checkout-btn btn-red ai-c py-2'>Checkout</button></a>
+        
     </div>
     
 </div>

@@ -17,9 +17,12 @@ class Product(models.Model):
     product_info = models.TextField()
     brand = models.CharField(max_length=50)
 
+    def __iter__(self):
+        return iter([self.name, self.category, self.image, self.price, self.date_added, self.product_info, self.brand])
 
-    def __str__(self):
-        return self.name
+
+    # def __str__(self):
+    #     return self.name
 
 class Cart(models.Model):
     user=models.ForeignKey(User,on_delete=models.CASCADE,null=False)

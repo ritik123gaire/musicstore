@@ -4,8 +4,10 @@ from .models import *
 from users.forms import CustomUserCreationForm
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 import json
 import requests
+import random
 
 def getProducts(request):
     product = Product.objects.all().order_by('-date_added')
@@ -78,8 +80,13 @@ def checkout(request):
                 }
             )
             return redirect('payment')
+        if not city_data or not location_data or not state_data or not cart_instance:
+            messages.error(request, 'Please fill out all fields')
+            return redirect('checkout')
 
     return render(request,"pages/checkout.html",{"cart":cart})
+
+
 
 
 

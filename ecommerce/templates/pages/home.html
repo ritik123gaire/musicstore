@@ -3,6 +3,8 @@
 
 {% block content %}
 
+
+
 <!--header -->
 <header class="upper-page container-fluid bg-red py-3">
   <img class="watermark" src="{% static 'images/waves-icon.png' %}" alt="wave-big" />
@@ -43,44 +45,50 @@
 <!-- slider -->
 
 <!-- new -->
+{% for product in products|slice:":1"%}
 <div class="hotads py-3 co-l f-hm">
   <div class="hotads-cont container ai-c h-100 px-0">
     <div class="hotads__arrow_circle round w-mc ai-c jc-c co-r d-none d-md-flex">
       <i class="fas fa-chevron-left"></i>
     </div>
-    <div class="hotads__main flex-col w-90 center h-100 px-3">
+    <div class="hotads__main flex-col w-90 center h-100 px-3 active"> 
       <div class="hotads__main_content jc-sb">
-        <div class="hotads__main_content-img"></div>
+        <div class="hotads__main_content "><img src={{product.image.url}} class="img  w-80 mt-3 h-110" style="width:296px;height: 270px;"></div>
         <div class="hotads__main_content-info py-3">
-          <h3 class="co-r f-hm">Flamenco Guitar - Cordoba C5</h3>
+          <h3 class="co-r f-hm">{{product.name}}</h3>
           <div class="fixed-p">
 
         <p class="fixed-p f-hl co-d">
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-          Reprehenderit alias tempora officia molestiae assumenda
-          ratione debitis ipsum explicabo voluptates nemo, sequi 
+          {{product.product_info}}
          
         </p>
           </div>
-        <p class="co-d">Brand: <span class="co-l f-hl">Flamenco</span></p>
+        <p class="co-d">Brand: <span class="co-l f-hl">{{product.brand}}</span></p>
         <p class="mb-0 co-d">
-          Category: <span class="co-l f-hl">Acoustic Guitar</span>
+          Category: <span class="co-l f-hl">{{product.category}}</span>
         </p>
         <div class="hotads__main_content-info-button w-mc ai-c mt-2">
-          <button type="button" class="btn-red m-0 center ai-c py-2">RS 10050</button>
-          <button type="button" class="btn-red mx-0 ai-c">
-            <i class="fas fa-shopping-cart mr-2" aria-hidden="true"></i>
-            <span>Purchase Details</span>
-          </button>
+          <button type="button" class="btn-red m-0 center ai-c py-2">{{product.price}}</button>
+          {% if user.is_authenticated %}
+                    <button class="cart-button btn-red mx-0 ai-c" data-product={{product.id}} data-user={{request.user}} data-action="add" 
+                    onclick="alert('Product added to cart')"><i class="fas fa-shopping-cart mr-2" aria-hidden="true"></i>Add to Cart</button>
+
+                    {% else %}
+                    
+
+                    <button onclick="location.href='{% url 'login-page' %}'"  class="btn-red m-0 center ai-c py-2"><i class="fas fa-shopping-cart mr-2" aria-hidden="true"></i>Add to Cart</button>
+            
+             {% endif %}
           </div>
           </div>
        </div>
        </div>
        
-            <div class="hotads__arrow_circle round w-mc ai-c jc-c co-r d-none d-md-flex">
+            <div class="hotads__arrow_circle round w-mc ai-c jc-c co-r  d-md-flex">
               <i class="fas fa-chevron-right"></i>
             </div>
             </div>
+        {% endfor %}
             
           
 <!-- products -->
