@@ -14,5 +14,8 @@ urlpatterns = [
     path('esewaverify',esewaverify,name='esewaverify'),
     path('register',register,name='register-page'),
     path('logout',LogoutPage,name='logout'),
-    path('product/<int:pk>/',productdetails,name='product')
+    path('products_json',products_json,name='products_json'),
+    path('product/<int:pk>/',productdetails,name='product'),
+    
+    
 ]

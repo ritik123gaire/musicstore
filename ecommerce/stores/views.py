@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect,HttpResponse
 from django.http import JsonResponse
 from .models import *
+from django.conf import settings
 from users.forms import CustomUserCreationForm
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
@@ -192,3 +193,15 @@ def productdetails(request,pk):
         "product" : product
     }
     return render(request, 'pages/product.html',context)
+
+# def products_json(request):
+#     products = Product.objects.all()
+#     products_json = json.dumps(list(products.values()),default=str)
+#     return JsonResponse(json.loads(products_json), safe=False)
+
+def products_json(request):
+    products = Product.objects.all()
+    products_json = json.dumps(list(products.values()),default=str)
+    return JsonResponse(json.loads(products_json),safe=False)
+
+

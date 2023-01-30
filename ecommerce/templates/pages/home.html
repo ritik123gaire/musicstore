@@ -3,6 +3,51 @@
 
 {% block content %}
 
+<script>
+
+  $(document).ready(function(){
+   var products_json_url = "{% url 'products_json' %}";
+   let currentProduct = 0;  
+   $.getJSON(products_json_url, function(data) {
+    products_json = data;
+    updateProduct(currentProduct);
+    console.log(products_json)
+    document.getElementById("left-btn").addEventListener("click", function(){
+      currentProduct--;
+      if(currentProduct<0){
+          currentProduct = products_json.length-1;
+      }
+      updateProduct(currentProduct);
+    });
+    document.getElementById("right-btn").addEventListener("click", function(){
+      currentProduct++;
+      if(currentProduct>=products_json.length){
+          currentProduct = 1;
+      }
+      updateProduct(currentProduct);
+    });
+    function updateProduct(index){
+      
+      let product = products_json[index];
+      let img = document.querySelector('.hotads__main_content img');
+      console.log(product.image);
+      img.src = 'media/'+product.image;
+      // img.src = product.image.url
+      let name = document.querySelector('.hotads__main_content-info h3');
+      name.innerText = product.name;
+      let product_info = document.querySelector('.hotads__main_content-info .fixed-p');
+      product_info.innerText = product.product_info;
+      let brand = document.querySelector('.hotads__main_content-info p:nth-child(3) span');
+      brand.innerText = product.brand;
+      let category = document.querySelector('.hotads__main_content-info p:nth-child(4) span');
+      category.innerText = product.category;
+      let price = document.querySelector('.hotads__main_content-info-button button:nth-child(1)');
+      price.innerText = 'RS '+product.price;
+    }
+});
+});
+  
+  </script>
 
 
 <!--header -->
@@ -42,57 +87,60 @@
 </header>
 
 
-<!-- slider -->
 
-<!-- new -->
-{% for product in products|slice:":1"%}
+<!-- slider with js -->
+
 <div class="hotads py-3 co-l f-hm">
   <div class="hotads-cont container ai-c h-100 px-0">
-    <div class="hotads__arrow_circle round w-mc ai-c jc-c co-r d-none d-md-flex">
-      <i class="fas fa-chevron-left"></i>
+    <div class="hotads__arrow_circle round w-mc ai-c jc-c co-r d-none d-md-flex " id="left-btn">
+      <i class="fas fa-chevron-left" id="left-btn"></i>
     </div>
     <div class="hotads__main flex-col w-90 center h-100 px-3 active"> 
       <div class="hotads__main_content jc-sb">
-        <div class="hotads__main_content "><img src={{product.image.url}} class="img  w-80 mt-3 h-110" style="width:296px;height: 270px;"></div>
-        <div class="hotads__main_content-info py-3">
-          <h3 class="co-r f-hm">{{product.name}}</h3>
-          <div class="fixed-p">
-
-        <p class="fixed-p f-hl co-d">
-          {{product.product_info}}
-         
-        </p>
+        
+        <div class="hotads__main_content "><img src="" class="img  w-80 mt-3 h-110" style="width:296px;height: 265px;">
+        </div>
+          <div class="hotads__main_content-info py-3">
+            <h3 class="co-r f-hm"></h3>
+            <div class="mb-5 ">
+              <p class="fixed-p f-hl co-d"></p>
+            </div>
+            <p class="mb-0 co-d">Brand: <span class="co-l f-hl"></span></p>
+            <p class="mb-0 co-d">
+              Category: <span class="co-l f-hl"></span>
+            </p>
+            <div class="hotads__main_content-info-button w-mc ai-c mt-2">
+              <button type="button" class="btn-dark m-0 center ai-c py-2"> </button>
+              <!-- {% if user.is_authenticated %}
+                <button class="cart-button btn-red mx-0 ai-c" data-product={{product.id}} data-user={{request.user}} data-action="add" 
+                onclick="alert('Product added to cart')"><i class="fas fa-shopping-cart mr-2" aria-hidden="true"></i>Add to Cart</button>
+              {% else %}
+                <button onclick="location.href='{% url 'login-page' %}'"  class="btn-red m-0 center ai-c py-2"><i class="fas fa-shopping-cart mr-2" aria-hidden="true"></i>Add to Cart</button>
+              {% endif %} -->
+            </div>
           </div>
-        <p class="co-d">Brand: <span class="co-l f-hl">{{product.brand}}</span></p>
-        <p class="mb-0 co-d">
-          Category: <span class="co-l f-hl">{{product.category}}</span>
-        </p>
-        <div class="hotads__main_content-info-button w-mc ai-c mt-2">
-          <button type="button" class="btn-red m-0 center ai-c py-2">{{product.price}}</button>
-          {% if user.is_authenticated %}
-                    <button class="cart-button btn-red mx-0 ai-c" data-product={{product.id}} data-user={{request.user}} data-action="add" 
-                    onclick="alert('Product added to cart')"><i class="fas fa-shopping-cart mr-2" aria-hidden="true"></i>Add to Cart</button>
-
-                    {% else %}
-                    
-
-                    <button onclick="location.href='{% url 'login-page' %}'"  class="btn-red m-0 center ai-c py-2"><i class="fas fa-shopping-cart mr-2" aria-hidden="true"></i>Add to Cart</button>
-            
-             {% endif %}
-          </div>
-          </div>
-       </div>
-       </div>
        
-            <div class="hotads__arrow_circle round w-mc ai-c jc-c co-r  d-md-flex">
-              <i class="fas fa-chevron-right"></i>
-            </div>
-            </div>
-        {% endfor %}
-            
-          
+      </div>
+    </div>
+    <div class="hotads__arrow_circle round w-mc ai-c jc-c co-r  d-md-flex" id="right-btn">
+      <i class="fas fa-chevron-right" id="right-btn"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- slider with js -->
+
+
+
+<!-- old_ slider -->
+
+
+
+
 <!-- products -->
-<div class="products__display w-90 center mt-5">
+<div class="products__display w-90 center mt-5 ">
     <div class="products__display__header ai-c mb-3 co-d">
       <i class="fas fa-guitar mr-4 co-l"></i>
       <h5>Our Latest Products</h5>

@@ -74,7 +74,7 @@
               {% endif %}
               
               
-
+              {% if user.is_authenticated %}
                 <a class="nav__menu__item" href="{% url 'cart' %}">
                     <div class="nav__menu__item co-l ai-c">
                       <div class="nav__menu__item-icon mr-2">
@@ -84,7 +84,8 @@
                     </div>
                 </a>
              </a>
-
+             {% endif %}
+             
              {% if user.is_authenticated %}
              <!-- <a class="nav__menu__item" href="#"></a> -->
              
