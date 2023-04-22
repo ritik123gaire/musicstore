@@ -22,13 +22,13 @@ $(
             let productId = this.dataset.product
             let action = this.dataset.action
             let user = this.dataset.user
-            console.log(productId," ",action," ",user)
+            
             updateCartItem(productId,action)
         })
 
         $('.checkout-btn').click(function(){
             let cartId = this.dataset.cart
-            console.log(cartId)
+            
 
             updateCheckOut(cartId)
         })
@@ -51,7 +51,7 @@ $(
                 return response.json()
             })
             .then(data =>{
-                console.log(data)
+                
             })
         }
 
@@ -74,7 +74,7 @@ $(
                 return response.json()
             })
             .then(data =>{
-                console.log(data)
+                
                 location.reload()
             })
         }
