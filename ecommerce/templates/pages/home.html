@@ -5,84 +5,84 @@
 
 <script>
 
-  $(document).ready(function(){
-   var products_json_url = "{% url 'products_json' %}";
-   let currentProduct = 0;  
-   $.getJSON(products_json_url, function(data) {
-    products_json = data;
-    updateProduct(currentProduct);
-    console.log(products_json)
-    document.getElementById("left-btn").addEventListener("click", function(){
-      currentProduct--;
-      if(currentProduct<0){
-          currentProduct = products_json.length-1;
-      }
+  $(document).ready(function () {
+    var products_json_url = "{% url 'products_json' %}";
+    let currentProduct = 0;
+    $.getJSON(products_json_url, function (data) {
+      products_json = data;
       updateProduct(currentProduct);
-    });
-    document.getElementById("right-btn").addEventListener("click", function(){
-      currentProduct++;
-      if(currentProduct>=products_json.length){
+      console.log(products_json)
+      document.getElementById("left-btn").addEventListener("click", function () {
+        currentProduct--;
+        if (currentProduct < 0) {
+          currentProduct = products_json.length - 1;
+        }
+        updateProduct(currentProduct);
+      });
+      document.getElementById("right-btn").addEventListener("click", function () {
+        currentProduct++;
+        if (currentProduct >= products_json.length) {
           currentProduct = 1;
+        }
+        updateProduct(currentProduct);
+      });
+      function updateProduct(index) {
+
+        let product = products_json[index];
+        let img = document.querySelector('.hotads__main_content img');
+        console.log(product.image);
+        img.src = 'media/' + product.image;
+        // img.src = product.image.url
+        let name = document.querySelector('.hotads__main_content-info h3');
+        name.innerText = product.name;
+        let product_info = document.querySelector('.hotads__main_content-info .fixed-p');
+        product_info.innerText = product.product_info;
+        let brand = document.querySelector('.hotads__main_content-info p:nth-child(3) span');
+        brand.innerText = product.brand;
+        let category = document.querySelector('.hotads__main_content-info p:nth-child(4) span');
+        category.innerText = product.category;
+        let price = document.querySelector('.hotads__main_content-info-button button:nth-child(1)');
+        price.innerText = 'RS ' + product.price;
       }
-      updateProduct(currentProduct);
     });
-    function updateProduct(index){
-      
-      let product = products_json[index];
-      let img = document.querySelector('.hotads__main_content img');
-      console.log(product.image);
-      img.src = 'media/'+product.image;
-      // img.src = product.image.url
-      let name = document.querySelector('.hotads__main_content-info h3');
-      name.innerText = product.name;
-      let product_info = document.querySelector('.hotads__main_content-info .fixed-p');
-      product_info.innerText = product.product_info;
-      let brand = document.querySelector('.hotads__main_content-info p:nth-child(3) span');
-      brand.innerText = product.brand;
-      let category = document.querySelector('.hotads__main_content-info p:nth-child(4) span');
-      category.innerText = product.category;
-      let price = document.querySelector('.hotads__main_content-info-button button:nth-child(1)');
-      price.innerText = 'RS '+product.price;
-    }
-});
-});
-  
-  </script>
+  });
+
+</script>
 
 
 <!--header -->
 <header class="upper-page container-fluid bg-red py-3">
   <img class="watermark" src="{% static 'images/waves-icon.png' %}" alt="wave-big" />
   <div class="z-2 container max-w-80 w-90">
-      <div class="container flex-col">
-          <div class="brand-name--lg-w-page w-mc">MUSICIFY</div>
-          <h1 class="co-w f-hl w-mc">
-              Your marketplace for buying Musical Instruments
-          </h1>
-      </div>
+    <div class="container flex-col">
+      <div class="brand-name--lg-w-page w-mc">MUSICIFY</div>
+      <h1 class="co-w f-hl w-mc">
+        Your marketplace for buying Musical Instruments
+      </h1>
+    </div>
 
-      <div class="search container-fluid ai-c jc-sb w-100">
-          <form class="search container-fluid ai-c jc-sb w-100" action="{% url 'search' %}" method="get">
-              <div class="search-top h-search ai-c">
-                  <div class="search__dropdown bg-white h-100 w-20 bord-r-red ai-c pl-1 pr-3 d-none d-md-flex">
-                      <div class="search__dropdown-icon co-dt m-2">
-                          <i class="fas "></i>
-                      </div>
-                      <div class="search__dropdown-text co-dt f-gl">Instruments</div>
-                  </div>
-                  <div class="search__question bg-white h-100 bord-r-red co-l ai-c f-gl pl-2">
-                      What do you search for?
-                  </div>
-                  <input type="text" name="query" placeholder="Type Here" class="search__input h-100 co-l" />
-              </div>
+    <div class="search container-fluid ai-c jc-sb w-100">
+      <form class="search container-fluid ai-c jc-sb w-100" action="{% url 'search' %}" method="get">
+        <div class="search-top h-search ai-c">
+          <div class="search__dropdown bg-white h-100 w-20 bord-r-red ai-c pl-1 pr-3 d-none d-md-flex">
+            <div class="search__dropdown-icon co-dt m-2">
+              <i class="fas "></i>
+            </div>
+            <div class="search__dropdown-text co-dt f-gl">Instruments</div>
+          </div>
+          <div class="search__question bg-white h-100 bord-r-red co-l ai-c f-gl pl-2">
+            What do you search for?
+          </div>
+          <input type="text" name="query" placeholder="Type Here" class="search__input h-100 co-l" />
+        </div>
 
-              <div class="search-btn-div h-100">
-                  <button type="submit" class="search__button btn-dark w-100">
-                    <b> Search </b><i class="fa fa-search pl-4"></i>
-                  </button>
-              </div>
-          </form>
-      </div>
+        <div class="search-btn-div h-100">
+          <button type="submit" class="search__button btn-dark w-100">
+            <b> Search </b><i class="fa fa-search pl-4"></i>
+          </button>
+        </div>
+      </form>
+    </div>
   </div>
 </header>
 
@@ -95,31 +95,31 @@
     <div class="hotads__arrow_circle round w-mc ai-c jc-c co-r d-none d-md-flex " id="left-btn">
       <i class="fas fa-chevron-left" id="left-btn"></i>
     </div>
-    <div class="hotads__main flex-col w-90 center h-100 px-3 active"> 
+    <div class="hotads__main flex-col w-90 center h-100 px-3 active">
       <div class="hotads__main_content jc-sb">
-        
+
         <div class="hotads__main_content "><img src="" class="img  w-80 mt-3 h-110" style="width:296px;height: 265px;">
         </div>
-          <div class="hotads__main_content-info py-3">
-            <h3 class="co-r f-hm"></h3>
-            <div class="mb-5 ">
-              <p class="fixed-p f-hl co-d"></p>
-            </div>
-            <p class="mb-0 co-d">Brand: <span class="co-l f-hl"></span></p>
-            <p class="mb-0 co-d">
-              Category: <span class="co-l f-hl"></span>
-            </p>
-            <div class="hotads__main_content-info-button w-mc ai-c mt-2">
-              <button type="button" class="btn-dark m-0 center ai-c py-2"> </button>
-              <!-- {% if user.is_authenticated %}
+        <div class="hotads__main_content-info py-3">
+          <h3 class="co-r f-hm"></h3>
+          <div class="mb-5 ">
+            <p class="fixed-p f-hl co-d"></p>
+          </div>
+          <p class="mb-0 co-d">Brand: <span class="co-l f-hl"></span></p>
+          <p class="mb-0 co-d">
+            Category: <span class="co-l f-hl"></span>
+          </p>
+          <div class="hotads__main_content-info-button w-mc ai-c mt-2">
+            <button type="button" class="btn-dark m-0 center ai-c py-2"> </button>
+            <!-- {% if user.is_authenticated %}
                 <button class="cart-button btn-red mx-0 ai-c" data-product={{product.id}} data-user={{request.user}} data-action="add" 
                 onclick="alert('Product added to cart')"><i class="fas fa-shopping-cart mr-2" aria-hidden="true"></i>Add to Cart</button>
               {% else %}
                 <button onclick="location.href='{% url 'login-page' %}'"  class="btn-red m-0 center ai-c py-2"><i class="fas fa-shopping-cart mr-2" aria-hidden="true"></i>Add to Cart</button>
               {% endif %} -->
-            </div>
           </div>
-       
+        </div>
+
       </div>
     </div>
     <div class="hotads__arrow_circle round w-mc ai-c jc-c co-r  d-md-flex" id="right-btn">
@@ -141,47 +141,49 @@
 
 <!-- products -->
 <div class="products__display w-90 center mt-5 ">
-    <div class="products__display__header ai-c mb-3 co-d">
-      <i class="fas fa-guitar mr-4 co-l"></i>
-      <h5>Our Latest Products</h5>
-     
-    </div>
+  <div class="products__display__header ai-c mb-3 co-d">
+    <i class="fas fa-guitar mr-4 co-l"></i>
+    <h5>Our Latest Products</h5>
 
-<div class="products__display__cards ai-c jc-sb">
+  </div>
 
-        {% for product in products|slice:":12" %}
+  <div class="products__display__cards ai-c jc-sb">
 
-        <div class="products__display__cards-item">
-                <div class="products__display__cards-item--img h-50"><img src={{product.image.url}} alt="" class='product-image'  style="width:196px;height: 138px;"> </div>
-                
-                <button class="btn-transparent" onclick="location.href='{% url 'product' product.id %}'"><i class="fa fa-info-circle"></i></button>
-                <div class="products__display__cards-item--content h-50 mx-3 pt-3">
-                <h6 class="co-dt">{{product.name}}</h6>
-                <!-- <p f-gb my-0>{{product.category}}</p> -->
-                <div class="ai-c jc-sb mt-2">
-                    <div class="price co-r f-hm">RS {{product.price}}</div>
-                    
-                    {% if user.is_authenticated %}
-                    <button class="cart-button btn-transparent w-50" data-product={{product.id}} data-user={{request.user}} data-action="add" 
-                    onclick="alert('Product added to cart')">Add</button>
-                    {% else %}
-                    <a href="{% url 'login-page' %}" class="btn-transparent w-50">Add</a>
-                    {% endif %}
-                  
-                    <!-- btn-transparent w-50 -->
-                </div>
+    {% for product in products|slice:":12" %}
 
-               
+    <div class="products__display__cards-item">
+      <div class="products__display__cards-item--img h-50"><img src={{product.image.url}} alt="" class='product-image'
+          style="width:196px;height: 138px;"> </div>
 
-                
-              
-                  
+      <button class="btn-transparent" onclick="location.href='{% url 'product' product.id %}'"><i
+          class="fa fa-info-circle"></i></button>
+      <div class="products__display__cards-item--content h-50 mx-3 pt-3">
+        <h6 class="co-dt">{{product.name}}</h6>
+        <!-- <p f-gb my-0>{{product.category}}</p> -->
+        <div class="ai-c jc-sb mt-2">
+          <div class="price co-r f-hm">RS {{product.price}}</div>
 
-            </div>
-            
+          {% if user.is_authenticated %}
+          <button class="cart-button btn-transparent w-50" data-product={{product.id}} data-user={{request.user}}
+            data-action="add" onclick="alert('Product added to cart')">Add</button>
+          {% else %}
+          <a href="{% url 'login-page' %}" class="btn-transparent w-50">Add</a>
+          {% endif %}
+
+          <!-- btn-transparent w-50 -->
         </div>
 
-        {% endfor %}
+
+
+
+
+
+
+      </div>
+
+    </div>
+
+    {% endfor %}
+  </div>
 </div>
-</div>  
 {% endblock %}

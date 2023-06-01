@@ -8,7 +8,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 import json
 import requests
-import random
+
 
 def getProducts(request):
     product = Product.objects.all().order_by('-date_added')
